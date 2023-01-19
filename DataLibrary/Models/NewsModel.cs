@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
-    internal class NewsModel
+    public class NewsModel
     {
     }
 }
