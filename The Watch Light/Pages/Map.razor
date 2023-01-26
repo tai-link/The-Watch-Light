@@ -1,5 +1,81 @@
-﻿<h3>Map</h3>
+﻿@page "/map"
+@using The_Watch_Light.Services;
+@inject IJSRuntime JS
+
+<button @onclick="GenerateClicked" disabled="@disabled"> Generate geo points </button>
+<button @onclick="CenterClicked"> Center </button>
+
+<div id='myMap' style='width: 100%; height: 400px; background-color:beige; padding:16px'></div>
 
 @code {
+    public static bool disabled = true;
+    static Map instance;
 
+    public Map()
+    {
+        instance = this;
+    }
+
+    static System.Timers.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _timer = new System.Timers.Timer(TimeSpan.FromMilliseconds(500));
+        _timer.Start();
+        _timer.Elapsed += (a, b) =>
+        {
+            if (!disabled)
+            {
+                _timer.Stop();
+
+                InvokeAsync(StateHasChanged);
+                InvokeAsync(LoadMap);
+            }
+#if ANDROID || IOS
+    InvokeAsync(LoadMap);
+#endif
+        };
+
+    }
+
+
+
+    private async void LoadMap()
+    {
+
+#if ANDROID || IOS
+    PermissionStatus status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+
+    if (status == PermissionStatus.Granted)
+    {
+    LocationService locationService = new LocationService();
+    var location = await locationService.GetCurrentLocationAsync(new CancellationToken());
+    double longitude = location.Longitude;
+    double latitude = location.Latitude;
+    await JS.InvokeVoidAsync("loadMapOS", longitude, latitude);
+    }
+#else
+        await JS.InvokeVoidAsync("loadMap");
+#endif
+
+    }
+
+
+    private async void GenerateClicked()
+    {
+        await JS.InvokeVoidAsync("generateGeoPoints");
+    }
+
+    private async void CenterClicked()
+    {
+        await JS.InvokeVoidAsync("center");
+    }
+
+    [JSInvokable]
+    public static Task Initilized()
+    {
+        return Task.FromResult(disabled = false);
+    }
 }
+
