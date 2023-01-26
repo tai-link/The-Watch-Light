@@ -1,6 +1,5 @@
 ﻿@page "/response"
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@using Microsoft.AspNetCore.Components.WebAssembly.Services
+
 
 <Map Latitude="@Latitude" Longitude="@Longitude" Zoom="13"></Map>
 
@@ -10,7 +9,7 @@
         <p class="card-text">
             @foreach (var step in Directions)
             {
-                <div>@step.instruction</div>
+                <div>@step</div>
             }
         </p>
     </div>
@@ -20,13 +19,13 @@
 @code {
     private double Latitude { get; set; }
     private double Longitude { get; set; }
-    private IEnumerable<Direction> Directions { get; set; }
+    private IEnumerable<string> Directions { get; set; }
     private int UserId { get; set; }
     private int AssistedUserId { get; set; }
     private readonly NavigationManager _navigation;
     private readonly IJSRuntime _jsRuntime;
 
-    public AssistancePage(NavigationManager navigation, IJSRuntime jsRuntime)
+    public Response(NavigationManager navigation, IJSRuntime jsRuntime)
     {
         _navigation = navigation;
         _jsRuntime = jsRuntime;
@@ -41,7 +40,7 @@
         AssistedUserId = int.Parse(data["assistedUserId"]);
         Latitude = double.Parse(data["latitude"]);
         Longitude = double.Parse(data["longitude"]);
-        Directions = await _jsRuntime.InvokeAsync<IEnumerable<Direction>>("getDirections", Latitude, Longitude);
+        Directions = await _jsRuntime.InvokeAsync<IEnumerable<string>>("getDirections", Latitude, Longitude);
     }
 
     private async Task AcceptAssistance()

@@ -4,9 +4,9 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The Watch Light", "The Watch Light\The Watch Light.csproj", "{4AC27DDF-70A6-4582-8118-A2D1111EB5EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{4A7978F8-1ADD-486F-9B7A-F26D932539FC}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "thewatchlightdb", "thewatchlightdb\thewatchlightdb.sqlproj", "{23E94C2B-3F6D-42F3-A112-75521331E0CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{93F6788F-6965-4849-92C0-6EFB21109C4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,16 +20,16 @@ Global
 		{4AC27DDF-70A6-4582-8118-A2D1111EB5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AC27DDF-70A6-4582-8118-A2D1111EB5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AC27DDF-70A6-4582-8118-A2D1111EB5EB}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{4A7978F8-1ADD-486F-9B7A-F26D932539FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A7978F8-1ADD-486F-9B7A-F26D932539FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A7978F8-1ADD-486F-9B7A-F26D932539FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A7978F8-1ADD-486F-9B7A-F26D932539FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23E94C2B-3F6D-42F3-A112-75521331E0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23E94C2B-3F6D-42F3-A112-75521331E0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E94C2B-3F6D-42F3-A112-75521331E0CE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{23E94C2B-3F6D-42F3-A112-75521331E0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23E94C2B-3F6D-42F3-A112-75521331E0CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23E94C2B-3F6D-42F3-A112-75521331E0CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{93F6788F-6965-4849-92C0-6EFB21109C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F6788F-6965-4849-92C0-6EFB21109C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F6788F-6965-4849-92C0-6EFB21109C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F6788F-6965-4849-92C0-6EFB21109C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

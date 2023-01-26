@@ -23,6 +23,59 @@
     </div>
 
     <script src="_framework/blazor.webview.js" autostart="false"></script>
+    <script type='text/javascript'>
+        let map;
+        let userPosition;
+        let userPushPin;
+        let generatedPoints;
+        let userZoom;
+        let generatedLayer;
+        let layer;
+        let mapElement;
+
+        function Init() {
+            DotNet.invokeMethodAsync("The Watch Light", "Initilized");
+        }
+
+        function loadMap() {
+            map = new Microsoft.Maps.Map(document.getElementById("myMap"), {});
+            userPosition = map.getCenter();
+            userZoom = map.getZoom();
+            userPushPin = new Microsoft.Maps.Pushpin(map.getCenter(), { color: 'black' });
+            map.entities.push(userPushPin);
+            if (map)
+                DotNet.invokeMethodAsync("The Watch Light", "Initilized");
+        }
+
+        function loadMapOS(long, lat) {
+
+            map = new Microsoft.Maps.Map(document.getElementById("myMap"), {});
+            userPosition = new Microsoft.Maps.Location(lat, long);
+            userZoom = map.getZoom();
+            userPushPin = new Microsoft.Maps.Pushpin(userPosition, { color: 'black' });
+            map.entities.push(userPushPin);
+            if (map)
+                DotNet.invokeMethodAsync("The Watch Light", "Initilized");
+        }
+
+
+        function generateGeoPoints() {
+            center();
+            generatedPoints = Microsoft.Maps.TestDataGenerator.getPushpins(10, map.getBounds());
+            map.entities.push(generatedPoints);
+        }
+
+        function center() {
+            map.setView({
+                center: userPosition,
+                zoom: userZoom
+            });
+        }
+
+
+    </script>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AgqE7gTLe1UXrNpUWvFb2vASiZlv7DbQ6gBEgcbsAm6xd9PcwXdZ5s7fjV0CfAIY&callback=Init' async defer></script>
+
 
 </body>
 
